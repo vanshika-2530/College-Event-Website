@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile Dashboard -EventHUb</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+
+        <nav class="navbar">
+            <h2>EventHub</h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profilenp.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <section class="dash">
+            <h1 class="heading">User Dashboard</h1>
+
+            <div class="bigbox">
+
+                <div class="dashboard">
+
+                    <div class="row">
+                        <div class="card">
+                            <h2>User Info</h2>
+                            <table>
+                                <tr>
+                                    <th>Name:</th>
+                                    <td id="user-name"></td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td id="user-email"></td>
+                                </tr>
+                                <tr>
+                                    <th>Phone No.:</th>
+                                    <td id="user-phone"></td>
+                                </tr>
+                                <tr>
+                                    <th>Roll No.:</th>
+                                    <td id="user-roll"></td>
+                                </tr>
+                                <tr>
+                                    <th>Degree:</th>
+                                    <td id="user-degree"></td>
+                                </tr>
+                                <tr>
+                                    <th>Department:</th>
+                                    <td id="user-department"></td>
+                                </tr>
+                                <tr>
+                                    <th>Year:</th>
+                                    <td id="user-year"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="card">
+                            <h2>Complete Profile</h2>
+                            <input type="text" class="edit-input" id="edit-name" placeholder="Name">
+                            <input type="text" class="edit-input" id="edit-email" placeholder="Email">
+                            <input type="text" class="edit-input" id="edit-phone" placeholder="Phone No.">
+                            <input type="text" class="edit-input" id="edit-degree" placeholder="Degree">
+                            <input type="text" class="edit-input" id="edit-department" placeholder="Department">
+                            
+                            <input type="text" class="edit-input" id="edit-year" placeholder="Year">
+
+                            <button class="save" onclick="updateProfile()">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="card">
+                            <h2>Registered Events</h2>
+                            <input type="text" id="search-event" placeholder="Search event">
+                            <button class="save" onclick="searchEvent()">Search</button>
+                            <ul id="events-list"></ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="card">
+                            <h2>Activity Log</h2>
+                            <ul id="activity-log"></ul>
+                        </div>
+
+
+                    <div class="card">
+                        <h2>Achievements</h2>
+                        <div id="badges"></div>
+                    </div>
+                    <div class="card">
+                        <h2>Progress</h2>
+                        <p id="progress"></p>
+                        <div id="progress-bar">
+                            <div id="progress-fill"></div>
+                        </div>
+                        <p id="progress"></p>
+                        <p id="progress-info"></p>
+
+            
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<div id="logoutPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="close-btn" onclick="closeLogoutPopup()">
+            &times;
+        </span>
+
+        <h2>Confirm Logout</h2>
+
+        <input type="password"
+               id="logoutPassword"
+               placeholder="Enter Password">
+
+        <button onclick="confirmLogout()">
+            Confirm Logout
+        </button>
+
+    </div>
+
+</div>
+        <button class="logout-btn"
+        onclick="openLogoutPopup()">
+
+    Logout
+
+</button>
+
+        <script src="projnp.js"></script>
+        <script src="script.js"></script>
+        <div id="logoutPopup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="close-btn"
+              onclick="closeLogoutPopup()">
+
+              &times;
+
+        </span>
+
+        <h2>Confirm Logout</h2>
+
+        <input type="password"
+               id="logoutPassword"
+               placeholder="Enter Password">
+
+        <button onclick="confirmLogout()">
+
+            Confirm Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-content">
+        <h2>🎓 EventHub</h2>
+        <p>Organizing unforgettable college events with creativity and passion.</p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p class="footer-bottom">©️ 2026 EventHub</p>
+    </div>
+</footer>
+
+
+    </body>
+</html>

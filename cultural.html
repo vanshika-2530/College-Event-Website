@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cultural Fest - EventHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+    <h2>🎓 EventHub</h2>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="projnp.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="event-details">
+
+      <div class="event-img-container">
+    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063" class="event-img">
+
+    <div class="action-buttons">
+        <button class="heart-btn" onclick="toggleSave(this, 'DJ NIGHT 🎧', 'cultural.html')">🤍</button>
+    </div>
+</div>
+
+    <p style="font-size: x-large;"><b>DJ NIGHT 🎧</b></p><br>
+
+   <p><b>Date:</b> 17 May <span id="event-date" style="display:none;">2026-05-17</span></p>
+<p><b>Time:</b> 8:00-10:00 PM <span id="event-time" style="display:none;">20:00</span></p>
+        <p><b>Venue:</b> Alpha Zone</p>
+
+<div id="countdown-box" class="countdown"></div><br><br>
+
+
+    <p class="desc">
+        <i>Get ready to groove, scream &amp; vibe at DJ night!</i>
+    </p>
+
+</section>
+
+<p id="rating-message-DJNight">You can rate this event after it ends.</p>
+<div id="stars-DJNight" style="pointer-events:none; opacity:0.5;">
+    <span onclick="rateEvent('DJNight',1)">⭐</span>
+    <span onclick="rateEvent('DJNight',2)">⭐</span>
+    <span onclick="rateEvent('DJNight',3)">⭐</span>
+    <span onclick="rateEvent('DJNight',4)">⭐</span>
+    <span onclick="rateEvent('DJNight',5)">⭐</span>
+</div>
+<p id="avg-rating-DJNight">No ratings yet.</p>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  startCountdown("DJNight","2026-05-17T20:00:00","2026-05-17T22:00:00","countdown-box");
+});
+</script>
+
+<div id="toast" class="toast"></div>
+
+<script src="registration.js"></script>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+function startCountdown(eventName, startTime, endTime, elementId) {
+    const start = new Date(startTime).getTime();
+    const end = new Date(endTime).getTime();
+
+    const timer = setInterval(() => {
+        const now = new Date().getTime();
+
+        if (now < start) {
+         
+            const distance = start - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById(elementId).textContent = `${days}d ${hours}h ${minutes}m left`;
+        } else if (now >= start && now <= end) {
+           
+            document.getElementById(elementId).textContent = "Event is LIVE!";
+        } else {
+           
+            clearInterval(timer);
+            document.getElementById(elementId).textContent = "Event Ended!";
+            enableRating(eventName); 
+        }
+    }, 1000);
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "toast show";
+    setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 4000);
+}
+
+</script>
+
+<footer>
+    <div class="footer-content">
+        <h2>🎓 EventHub</h2>
+        <p>Organizing unforgettable college events with creativity and passion.</p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p class="footer-bottom">©️ 2026 EventHub</p>
+    </div>
+</footer>
+
+</body>
+</html>

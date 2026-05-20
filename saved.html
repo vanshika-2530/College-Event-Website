@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saved Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 class="saved-title">❤️ Your Saved Events</h1>
+
+
+<button class="page-close-btn" onclick="goHome()">✖</button>
+
+<div id="savedContainer"></div>
+
+<script>
+let saved = JSON.parse(localStorage.getItem("savedEvents")) || [];
+let container = document.getElementById("savedContainer");
+
+if (saved.length === 0) {
+    container.innerHTML = "<p style='text-align:center;'>No saved events yet 😢</p>";
+} else {
+    saved.forEach(event => {
+        container.innerHTML += `
+            <div class="event-card" onclick="goToEvent('${event.link}')">
+                <h3>${event.name}</h3>
+            </div>
+        `;
+    });
+}
+
+function goToEvent(link) {
+    window.location.href = link;
+}
+
+function goHome() {
+    window.location.href = "index.html";
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creative Events - EventHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>🎓 EventHub</h2>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="projnp.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="event-details">
+
+    <div class="event-img-container">
+    <img src="https://images.pexels.com/photos/33756171/pexels-photo-33756171.jpeg" class="event-img">
+
+     <div class="action-buttons">
+        <button class="heart-btn" onclick="toggleSave(this, 'Clay Modelling 🎨', 'creative.html')">🤍</button>
+    </div>
+</div>
+
+    <p style="font-size: x-large;"><b>Clay Modelling 🎨</b></p><br>
+
+    <p><b>Date:</b> 5 April <span id="event-date" style="display:none;">2026-06-05</span></p>
+<p><b>Time:</b> 10:00 AM <span id="event-time" style="display:none;">10:00</span></p>
+    <p><b>Venue:</b> Omega Zone</p><br>
+
+        <div id="countdown-box" class="countdown"></div><br><br>
+        <button id="reminderBtn" onclick="setReminder()">🔔 Remind Me</button>
+
+    <p class="desc">
+        <i>
+            Turn your imagination into reality with your hands and creativity.<br>
+            Mold, shape, and design amazing clay art pieces. 🎨
+        </i>
+    </p>
+
+</section>
+
+
+<div class="rating-box">
+  <p id="rating-message">You can rate this event after it starts.</p>
+  <div id="stars-Clay Modelling" style="pointer-events:none; opacity:0.5;">
+    <span onclick="rateEvent('Clay Modelling',1)">⭐</span>
+    <span onclick="rateEvent('Clay Modelling',2)">⭐</span>
+    <span onclick="rateEvent('Clay Modelling',3)">⭐</span>
+    <span onclick="rateEvent('Clay Modelling',4)">⭐</span>
+    <span onclick="rateEvent('Clay Modelling',5)">⭐</span>
+  </div>
+</div>
+<p id="avg-rating-Clay Modelling">No ratings yet.</p>
+
+
+<script>
+ 
+  enableRating("Clay Modelling", "2026-06-05T10:00:00");
+</script>
+
+<section class="register">
+    <h2>Register Now</h2>
+    <p>Click below to register for this event</p>
+
+    <button class="register-btn"
+            data-event="Clay Modelling 🎨"
+            onclick="openRegisterPopup('Clay Modelling 🎨')">
+        Register
+    </button>
+</section>
+
+<div id="registerPopup" class="popup-overlay">
+    <div class="popup-box premium-popup">
+        <span class="close-btn" onclick="closeRegisterPopup()">&times;</span>
+
+        <h2>🎟 Confirm Registration</h2>
+        <p>Do you want to register for this event?</p>
+
+        <div class="popup-actions">
+            <button id="confirmBtn" class="confirm-btn">Yes, Register</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script src="registration.js"></script>
+
+
+<script>
+function startCountdown(eventDateTime, elementId) {
+    const target = new Date(eventDateTime).getTime();
+    const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = target - now;
+
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById(elementId).textContent = "Event Started!";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById(elementId).textContent =
+            `${days}d ${hours}h ${minutes}m ${seconds}s left`;
+    }, 1000);
+}
+
+const eventDate = document.getElementById("event-date").textContent.trim();
+const eventTime = document.getElementById("event-time").textContent.trim();
+const eventDateTime = `${eventDate}T${eventTime}:00`;
+
+startCountdown(eventDateTime, "countdown-box");
+
+
+function setReminder() {
+    const eventDate = document.getElementById("event-date").textContent.trim();
+    const eventTime = document.getElementById("event-time").textContent.trim();
+    const eventDateTime = new Date(`${eventDate}T${eventTime}:00`).getTime();
+
+    const reminderTime = eventDateTime - (10 * 60 * 1000);
+
+    const now = new Date().getTime();
+    const delay = reminderTime - now;
+
+    if (delay > 0) {
+        setTimeout(() => {
+            showToast("⏰ Reminder: Clay Modelling starts in 10 minutes!");
+        }, delay);
+        showToast("✅ Reminder set! You’ll be notified 10 minutes before the event.");
+    } else {
+        showToast("⚠️ Event is too close or already started.");
+    }
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "toast show";
+    setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 4000);
+}
+
+</script>
+
+
+<script src="script.js"></script>
+
+
+<footer>
+    <div class="footer-content">
+        <h2>🎓 EventHub</h2>
+        <p>Organizing unforgettable college events with creativity and passion.</p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p class="footer-bottom">©️ 2026 EventHub</p>
+    </div>
+</footer>
+
+</body>
+</html>

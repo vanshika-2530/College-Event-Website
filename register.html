@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration - EventHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>🎓 EventHub</h2>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="#" onclick="openLoginPopup()">Login</a></li>
+        <li><a href="saved.html">❤️ Saved</a></li>
+        <li><a href="projnp.html">Profile</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </li>
+    </ul>
+   
+    
+</nav>
+
+<section class="register-page">
+    <div class="register-box">
+        <h3 id="selectedEventText">Selected Event:</h3>
+        <h1>🎉 Event Registration</h1>
+
+        <form id="eventForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="number" placeholder="Roll Number" required>
+            <input type="text" placeholder="Course / Branch" required>
+            <input type="text" placeholder="Department" required>
+            <button type="submit">Submit Registration</button>
+        </form>
+    </div>
+</section>
+
+<div id="toast" class="toast"></div>
+
+<script src="registration.js"></script>
+</body>
+</html>
